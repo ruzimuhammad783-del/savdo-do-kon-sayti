@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kiyim do'koni</title>
+  <style>
+    :root {
+      --green: #1f9d55;
+      --green-dark: #167a40;
+      --blue: #1e6fd9;
+      --blue-dark: #1656ad;
+      --white: #ffffff;
+      --bg: #f5f9f7;
+      --text: #1b2a22;
+      --muted: #5d6b63;
+      --border: #dce8e1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      background: var(--white);
+      border-bottom: 3px solid var(--green);
+      z-index: 10;
+    }
+    .nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .logo { font-size: 1.4rem; font-weight: 800; letter-spacing: 1px; color: var(--blue); }
+    .logo span { color: var(--green); }
+    .nav a {
+      color: var(--text);
+      text-decoration: none;
+      margin-left: 18px;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+    .nav a:hover { color: var(--blue); }
+
+    .hero {
+      background: linear-gradient(135deg, var(--blue) 0%, var(--green) 100%);
+      color: var(--white);
+      padding: 90px 20px;
+      text-align: center;
+    }
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+      text-align: left;
+    }
+    .hero h1 { font-size: 2.6rem; margin-bottom: 14px; line-height: 1.2; }
+    .hero p { font-size: 1.1rem; opacity: 0.95; margin-bottom: 28px; max-width: 480px; }
+    .btn {
+      display: inline-block;
+      background: var(--white);
+      color: var(--blue-dark);
+      padding: 13px 30px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform 0.15s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .hero-art { width: 260px; max-width: 100%; }
+
+    section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+    section h2 {
+      text-align: center;
+      font-size: 1.9rem;
+      margin-bottom: 12px;
+      color: var(--blue-dark);
+    }
+    .subtitle {
+      text-align: center;
+      color: var(--muted);
+      margin-bottom: 36px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 24px;
+    }
+    .product {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .product:hover {
+      box-shadow: 0 8px 22px rgba(30, 111, 217, 0.15);
+      transform: translateY(-3px);
+    }
+    .product .img {
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .product .img svg { width: 120px; height: 120px; }
+    .bg-blue { background: #e4efff; }
+    .bg-green { background: #e3f6ea; }
+    .bg-mix { background: linear-gradient(135deg, #e4efff, #e3f6ea); }
+
+    .product .info { padding: 18px; }
+    .product h3 { font-size: 1.05rem; margin-bottom: 6px; color: var(--text); }
+    .product .price {
+      font-weight: 800;
+      color: var(--green-dark);
+      margin-bottom: 4px;
+    }
+    .product .desc { color: var(--muted); font-size: 0.9rem; }
+
+    .about {
+      background: var(--white);
+      border-top: 4px solid var(--blue);
+      border-bottom: 4px solid var(--green);
+    }
+    .about-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .about p { color: var(--muted); font-size: 1.05rem; }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 18px;
+      margin-top: 36px;
+    }
+    .feature {
+      padding: 22px;
+      border-radius: 12px;
+      color: var(--white);
+      font-weight: 600;
+    }
+    .feature.f1 { background: var(--blue); }
+    .feature.f2 { background: var(--green); }
+    .feature.f3 { background: var(--blue-dark); }
+    .feature.f4 { background: var(--green-dark); }
+
+    .contact-list {
+      max-width: 500px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 1.05rem;
+      background: var(--white);
+      padding: 30px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+    }
+    .contact-list p { margin-bottom: 12px; }
+    .contact-list a { color: var(--blue-dark); font-weight: 700; text-decoration: none; }
+
+    footer {
+      text-align: center;
+      padding: 24px 20px;
+      color: var(--white);
+      background: var(--blue-dark);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 1.9rem; }
+      .hero { padding: 60px 20px; }
+      .hero-art { width: 180px; }
+      .nav a { margin-left: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav">
+      <div class="logo">DO'KON<span>IM</span></div>
+      <nav>
+        <a href="#mahsulotlar">Mahsulotlar</a>
+        <a href="#haqida">Biz haqimizda</a>
+        <a href="#aloqa">Aloqa</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="hero-inner">
+      <div>
+        <h1>Yangi kolleksiya</h1>
+        <p>Sifatli va zamonaviy kiyimlar, har kuni uchun. Qulay narx, tez yetkazib berish.</p>
+        <a class="btn" href="#mahsulotlar">Xaridni boshlash</a>
+      </div>
+      <svg class="hero-art" viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="130" cy="130" r="120" fill="rgba(255,255,255,0.15)"/>
+        <path d="M95 70 L130 90 L165 70 L200 100 L180 130 L165 122 L165 200 L95 200 L95 122 L80 130 L60 100 Z" fill="#ffffff"/>
+        <path d="M95 70 L130 90 L165 70" fill="none" stroke="#1e6fd9" stroke-width="5"/>
+        <rect x="120" y="95" width="20" height="8" fill="#1f9d55"/>
+      </svg>
+    </div>
+  </div>
+
+  <section id="mahsulotlar">
+    <h2>Mahsulotlar</h2>
+    <p class="subtitle">Eng yangi va eng yaxshi tanlovimiz</p>
+    <div class="grid">
+
+      <div class="product">
+        <div class="img bg-blue">
+          <svg viewBox="0 0 120 120" aria-hidden="true">
+            <path d="M40 20 L60 32 L80 20 L104 40 L92 56 L84 52 L84 104 L36 104 L36 52 L28 56 L16 40 Z" fill="#1e6fd9"/>
+            <path d="M40 20 L60 32 L80 20" fill="none" stroke="#ffffff" stroke-width="3"/>
+          </svg>
+        </div>
+        <div class="info">
+          <h3>Erkaklar ko'ylagi</h3>
+          <div class="price">150 000 so'm</div>
+          <div class="desc">Yengil va qulay matodan</div>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="img bg-green">
+          <svg viewBox="0 0 120 120" aria-hidden="true">
+            <path d="M48 18 L72 18 L86 40 L80 46 L76 40 L76 104 L44 104 L44 40 L40 46 L34 40 Z" fill="#1f9d55"/>
+            <circle cx="60" cy="14" r="6" fill="#167a40"/>
+          </svg>
+        </div>
+        <div class="info">
+          <h3>Ayollar ko'ylagi</h3>
+          <div class="price">190 000 so'm</div>
+          <div class="desc">Nafis va zamonaviy uslub</div>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="img bg-mix">
+          <svg viewBox="0 0 120 120" aria-hidden="true">
+            <path d="M36 16 L84 16 L88 104 L68 104 L60 58 L52 104 L32 104 Z" fill="#1656ad"/>
+            <path d="M36 16 L84 16" stroke="#1f9d55" stroke-width="4"/>
+          </svg>
+        </div>
+        <div class="info">
+          <h3>Jins shim</h3>
+          <div class="price">220 000 so'm</div>
+          <div class="desc">Mustahkam va chiroyli</div>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="img bg-green">
+          <svg viewBox="0 0 120 120" aria-hidden="true">
+            <path d="M42 20 L78 20 L96 46 L84 56 L76 48 L76 104 L44 104 L44 48 L36 56 L24 46 Z" fill="#167a40"/>
+            <path d="M60 30 L60 104" stroke="#ffffff" stroke-width="3"/>
+          </svg>
+        </div>
+        <div class="info">
+          <h3>Sport kostyum</h3>
+          <div class="price">280 000 so'm</div>
+          <div class="desc">Harakat uchun qulay</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="haqida" class="about">
+    <div class="about-inner">
+      <h2>Biz haqimizda</h2>
+      <p>Biz sifatli kiyimlarni qulay narxda taklif qilamiz. Har bir mahsulot sinovdan o'tkazilgan va mijozlarimiz uchun tanlab olingan.</p>
+      <div class="features">
+        <div class="feature f1">Sifatli mato</div>
+        <div class="feature f2">Qulay narx</div>
+        <div class="feature f3">Tez yetkazish</div>
+        <div class="feature f4">Qaytarish kafolati</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="aloqa">
+    <h2>Aloqa</h2>
+    <p class="subtitle">Savollaringiz bo'lsa, biz bilan bog'laning</p>
+    <div class="contact-list">
+      <p>Telefon: <a href="tel:+998900000000">+998 90 000 00 00</a></p>
+      <p>Instagram: <a href="https://instagram.com/" target="_blank" rel="noopener">@dokonim</a></p>
+      <p>Manzil: Shahar, ko'cha, uy raqami</p>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2026 Do'konim. Barcha huquqlar himoyalangan.
+  </footer>
+
+</body>
+</html>
